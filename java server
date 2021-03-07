@@ -1,0 +1,47 @@
+JDBC (Java Databse Connectivity) is an advancement for ODBC (Open Database Connectivity), is a standard API for moving data backend. It basicaly acts as an interface ( not a java interface) or channecl between Java and the database
+
+
+
+CONNECTING JAVA AND THE DATABASE
+
+1. Load ethe driver
+    - 
+
+
+2. create conncetion
+    user – username from which your sql command prompt can be accessed.
+    password – password from which your sql command prompt can be accessed.
+    con: is a reference to Connection interface.
+    url : Uniform Resource Locator. It can be created as follows:
+
+3. Create a statement
+
+4. Excute Query
+5. cose connectiions
+
+
+
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class DATABASE {
+    Class.forName("oracle.jdbc.driver.OracleDriver");
+    Connection con = DriverManager.getConnection(url, user, password);
+
+    //con: is a reference to Connection interface.
+    //url : Uniform Resource Locator. It can be created as follows:
+    String url = "jbdc:orcale:thin:@localhost:1521:xe";
+    // where ocra databse is used, thin is the driver used, @localhost is the IP address of stored database, 1521 is port number, xe is service provider
+
+    Statement st = con.createStatement();
+    // JDBCStament, CallableStatment, and PreparedStatement define mothed s ton send SQL commonds and data
+
+    int m = st.executeUpdate(sql);
+    if (m==1)
+        System.out.println("inserted successfully : "+sql);
+    else
+        System.out.println("insertion failed");
+}
+
